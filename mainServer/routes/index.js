@@ -50,6 +50,16 @@ router
                 res.status(400).json({ result: "failed" });
             });
     })
+    .delete((req, res) => {
+        fileRepository
+            .deleteStorage(req.params.userId, req.body.key)
+            .then(() => res.status(200).json({ result: "success" }))
+            .catch(err => {
+                console.log(err);
+                res.status(400).json({ result: "failed" });
+            });
+    });
+
 });
 
 module.exports = router;
