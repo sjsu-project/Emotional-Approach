@@ -60,6 +60,16 @@ router
             });
     });
 
+router.post("/files/:userId", s3.array("file"), (req, res) => {
+    fileReposit
+        .insertfiles(req.params.userId, req.files, storagenum)
+        .then(() => {
+            res.status(200).json({ result: "success" });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json({ result: "failed" });
+        });
 });
 
 module.exports = router;
