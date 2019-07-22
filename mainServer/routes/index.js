@@ -39,6 +39,17 @@ router
                 res.status(400).json({ result: "failed" });
             });
     })
+    .put((req, res) => {
+        const now = date.format(new Date(), "YYYY/MM/DD");
+        
+        fileRepository
+            .updateStorage(req.params.userId, now, req.body)
+            .then(() => res.status(200).json({ result: "success" }))
+            .catch(err => {
+                console.log(err);
+                res.status(400).json({ result: "failed" });
+            });
+    })
 });
 
 module.exports = router;
