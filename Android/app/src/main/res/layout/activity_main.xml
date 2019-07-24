@@ -5,14 +5,22 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainbackgroud"
     android:fitsSystemWindows="true"
+    android:background="@drawable/mainbackgroud"
     tools:openDrawer="start">
 
     <include
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+
+    <!-- 각각의 Fragment를 넣을 Container -->
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/actionBarSize"/>
+
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

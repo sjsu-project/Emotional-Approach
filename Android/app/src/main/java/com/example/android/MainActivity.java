@@ -2,8 +2,12 @@ package com.example.android;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,11 +17,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    @Override
+    // FrameLayout에 각 메뉴의 Fragment를 바꿔 줌
+    private FragmentManager fragmentManager = getSupportFragmentManager();
+
+    //4개의 메뉴에 들어갈 Fragment들
+    private Home home = new Home();
+    private Notifications noti = new Notifications();
+    private Alarm alarm = new Alarm();
+    private Mypage mypage = new Mypage();
+
+
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -43,7 +58,43 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
+
+
+         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+
+         // 첫 화면 지정
+         FragmentTransaction transaction = fragmentManager.beginTransaction();
+         transaction.replace(R.id.frame_layout,home).commitAllowingStateLoss();
+
+         // bottomNavigationView의 아이템이 선택될 때 호출될 리스너 등록
+         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+             @Override
+             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                 FragmentTransaction transaction = fragmentManager.beginTransaction();
+                 switch (item.getItemId()) {
+                     case R.id.navigation_home: {
+                         transaction.replace(R.id.frame_layout, home).commitAllowingStateLoss();
+                         break;
+                     }
+                     case R.id.navigation_notifications: {
+                         transaction.replace(R.id.frame_layout, noti).commitAllowingStateLoss();
+                         break;
+                     }
+                     case R.id.navigation_alarm: {
+                         transaction.replace(R.id.frame_layout, alarm).commitAllowingStateLoss();
+                         break;
+                     }
+                     case R.id.navigation_mypage: {
+                         transaction.replace(R.id.frame_layout, mypage).commitAllowingStateLoss();
+                         break;
+                     }
+                 }
+
+                 return true;
+             }
+         });
+     }
+
 
     @Override
     public void onBackPressed() {
@@ -101,4 +152,26 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+//    @Override
+//    public void onClick(View v) {
+//
+//        switch (v.getId()){
+//            case R.id.navigation_home :
+//
+//                break;
+//            case R.id.navigation_notifications :
+//
+//                break;
+//            case R.id.navigation_alarm :
+//
+//                break;
+//            case R.id.navigation_mypage :
+//                Intent success = new Intent(MainActivity.this, Mypage.class);
+//                startActivity(success);
+//                finish();
+//                break;
+//        }
+//    }
+
 }

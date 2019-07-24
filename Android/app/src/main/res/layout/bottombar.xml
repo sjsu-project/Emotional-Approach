@@ -17,6 +17,13 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--&lt;!&ndash; 각각의 Fragment를 넣을 Container &ndash;&gt;-->
+    <!--<FrameLayout-->
+        <!--android:id="@+id/frame_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="?attr/actionBarSize"/>-->
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
