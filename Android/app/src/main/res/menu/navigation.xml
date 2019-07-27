@@ -2,24 +2,34 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:title="@string/title_home"
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:enabled="true"
+        />
 
     <item
+        android:title="@string/title_notifications"
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/email"
-        android:title="@string/title_notifications" />
+        android:enabled="true" />
 
     <item
+        android:title="@string/title_alarm"
         android:id="@+id/navigation_alarm"
         android:icon="@drawable/notification"
-        android:title="@string/title_alarm" />
+        android:enabled="true"
+
+        />
 
     <item
+        android:title="@string/title_mypage"
         android:id="@+id/navigation_mypage"
         android:icon="@drawable/user"
-        android:title="@string/title_mypage" />
+        android:enabled="true"
+
+        />
 
 
 </menu>
+    <!--app:showAsAction="ifRoom"-->

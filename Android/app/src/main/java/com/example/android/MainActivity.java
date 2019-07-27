@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -31,8 +32,13 @@ public class MainActivity extends AppCompatActivity
     private Alarm alarm = new Alarm();
     private Mypage mypage = new Mypage();
 
+    private Button search_bar;
+    private Button search_icon;
+    private static final String TAG = "MainActivity";
 
-     @Override
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -71,21 +77,35 @@ public class MainActivity extends AppCompatActivity
              @Override
              public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                  FragmentTransaction transaction = fragmentManager.beginTransaction();
+                 int id = item.getItemId();
                  switch (item.getItemId()) {
                      case R.id.navigation_home: {
+
                          transaction.replace(R.id.frame_layout, home).commitAllowingStateLoss();
+                         //Intent intent1 = new Intent(MainActivity.this,Home.class);
+                         Log.d(TAG, "next");
                          break;
                      }
                      case R.id.navigation_notifications: {
                          transaction.replace(R.id.frame_layout, noti).commitAllowingStateLoss();
+                         //Intent intent2 = new Intent(MainActivity.this,Notifications.class);
+
                          break;
                      }
                      case R.id.navigation_alarm: {
                          transaction.replace(R.id.frame_layout, alarm).commitAllowingStateLoss();
+                         //Intent intent3 = new Intent(MainActivity.this,Alarm.class);
+
                          break;
                      }
                      case R.id.navigation_mypage: {
                          transaction.replace(R.id.frame_layout, mypage).commitAllowingStateLoss();
+                         //Intent intent4 = new Intent(MainActivity.this,Mypage.class);
+
+                         Log.d(TAG,"mypage");
+//
+//                         Intent success = new Intent(MainActivity.this, Mypage.class);
+//                         startActivity(success);
                          break;
                      }
                  }
@@ -93,6 +113,8 @@ public class MainActivity extends AppCompatActivity
                  return true;
              }
          });
+
+
      }
 
 
@@ -118,12 +140,38 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//        if (id == R.id.navigation_home)
+//        {
+//            Log.d(TAG,"home");
+//            Intent Intent = new Intent(this, Home.class);
+//            startActivity(Intent);
+//        }
+//        if (id == R.id.navigation_alarm)
+//        {
+//            Log.d(TAG,"alarm");
+//
+//            Intent Intent = new Intent(this, Alarm.class);
+//            startActivity(Intent);
+//        }
+//        if (id == R.id.navigation_notifications)
+//        {
+//            Log.d(TAG,"noti");
+//            Intent Intent = new Intent(this, Notifications.class);
+//            startActivity(Intent);
+//        }
+//        if (id == R.id.navigation_mypage)
+//        {
+//            Log.d(TAG,"mypage");
+//
+//            Intent Intent = new Intent(this, Mypage.class);
+//            startActivity(Intent);
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -153,25 +201,5 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-//    @Override
-//    public void onClick(View v) {
-//
-//        switch (v.getId()){
-//            case R.id.navigation_home :
-//
-//                break;
-//            case R.id.navigation_notifications :
-//
-//                break;
-//            case R.id.navigation_alarm :
-//
-//                break;
-//            case R.id.navigation_mypage :
-//                Intent success = new Intent(MainActivity.this, Mypage.class);
-//                startActivity(success);
-//                finish();
-//                break;
-//        }
-//    }
 
 }
