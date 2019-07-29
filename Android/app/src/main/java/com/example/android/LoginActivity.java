@@ -161,6 +161,4 @@ public class LoginActivity extends AppCompatActivity
         Log.d(TAG,"onconnection failed");
     }
 
-
-
 }
