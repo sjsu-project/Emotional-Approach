@@ -11,7 +11,7 @@
             android:id="@+id/nav_Subscribers"
             android:title="Subscribers" />
         <item
-            android:id="@+id/Followers"
+            android:id="@+id/nav_Followers"
             android:title="Followers" />
     </group>
 

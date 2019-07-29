@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     private Button search_icon;
     private static final String TAG = "MainActivity";
 
+    private String name,email,img_url;
+    private TextView nav_name,nav_email;
 
 
     @Override
@@ -43,6 +46,18 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent(); /*데이터 수신*/
+        name = intent.getStringExtra("name");
+        email = intent.getStringExtra("email");
+        img_url = intent.getStringExtra("img_url");
+        Log.d(TAG,name);
+        Log.d(TAG,email);
+        Log.d(TAG,img_url);
+
+//        nav_name.findViewById(R.id.nav_name);
+//        nav_email.findViewById(R.id.nav_email);
+//        nav_name.setText(name);
+//        nav_email.setText(email);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -64,6 +79,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //View nav_header_view = navigationView.inflateHeaderView(R.layout.nav_header_main);
+        View nav_header_view = navigationView.getHeaderView(0);
+
+        nav_name = nav_header_view.findViewById(R.id.nav_name);
+        nav_name.setText(name);
+        nav_email = nav_header_view.findViewById(R.id.nav_email);
+        nav_email.setText(email);
 
 
          BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
@@ -182,20 +205,23 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-//        if (id == R.id.nav_Subscribers) {
-//            // Handle the camera action
-//        }
-//        else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_manage) {
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
+        if (id == R.id.nav_Subscribers) {
+            // Handle the camera action
+        }
+        else if (id == R.id.nav_Followers) {
+
+        } else if (id == R.id.nav_Payment) {
+
+        } else if (id == R.id.nav_Subscription) {
+
+        } else if (id == R.id.nav_rate) {
+
+        } else if (id == R.id.nav_report) {
+
+        } else if (id == R.id.nav_ask) {
+
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

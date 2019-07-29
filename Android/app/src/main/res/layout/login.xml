@@ -4,25 +4,28 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loginbackgroud"
-    android:gravity="bottom">
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:gravity="center">
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/Google_Login"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="50sp"
+            android:layout_marginTop="150dp"
+
             >
         </com.google.android.gms.common.SignInButton>
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="temp_button"
-        android:id="@+id/temp_button"/>
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="temp_button"-->
+        <!--android:id="@+id/temp_button"/>-->
 
 </LinearLayout>

@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "641236537673",
-    "firebase_url": "https://travelogue-8e7a3.firebaseio.com",
-    "project_id": "travelogue-8e7a3",
-    "storage_bucket": "travelogue-8e7a3.appspot.com"
+    "project_number": "294125860598",
+    "firebase_url": "https://travelogue-248207.firebaseio.com",
+    "project_id": "travelogue-248207",
+    "storage_bucket": "travelogue-248207.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:641236537673:android:4b7ec0d493ab8bad",
+        "mobilesdk_app_id": "1:294125860598:android:4b7ec0d493ab8bad",
         "android_client_info": {
           "package_name": "com.example.android"
         }
       },
       "oauth_client": [
         {
-          "client_id": "641236537673-c266v2vhqb45ts961cnkb1l1iljchknj.apps.googleusercontent.com",
+          "client_id": "294125860598-mmrpdqs4aok686fabtd5vrija4v6h24r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android",
+            "certificate_hash": "e90734a20232b3b48714b242bf5d884ffadc9a43"
+          }
+        },
+        {
+          "client_id": "294125860598-l8m68372bblie808fj88n0l1ei3ugnre.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAQVEtki3erEEqpiqV90oNdtgqvYKh95QE"
+          "current_key": "AIzaSyDYa5obrkQb65rEWGeESAuaNAhdITjSsXM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "641236537673-c266v2vhqb45ts961cnkb1l1iljchknj.apps.googleusercontent.com",
+              "client_id": "294125860598-l8m68372bblie808fj88n0l1ei3ugnre.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

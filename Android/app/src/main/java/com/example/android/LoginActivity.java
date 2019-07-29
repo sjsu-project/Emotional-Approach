@@ -42,6 +42,8 @@ public class LoginActivity extends AppCompatActivity
 
     private Button temp_button;
     private static final String TAG = "LoginActivity";
+    private String name,email,img_url;
+
 
 
     @Override
@@ -77,15 +79,15 @@ public class LoginActivity extends AppCompatActivity
             }
         });
 
-        temp_button = findViewById(R.id.temp_button);
-        temp_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent success = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(success);
-                finish();
-            }
-        });
+//        temp_button = findViewById(R.id.temp_button);
+//        temp_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent success = new Intent(LoginActivity.this, MainActivity.class);
+//                startActivity(success);
+//                finish();
+//            }
+//        });
 
     }
 
@@ -104,11 +106,19 @@ public class LoginActivity extends AppCompatActivity
                 // 구글 로그인 성공
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
-                String name = account.getDisplayName();
-                String email = account.getEmail();
-                String img_url = account.getPhotoUrl().toString();
+                name = account.getDisplayName();
+                email = account.getEmail();
+                img_url = account.getPhotoUrl().toString();
                 Log.d(TAG,name);
                 Log.d(TAG,email);
+                Log.d(TAG,img_url);
+
+//                Intent success = new Intent(LoginActivity.this, MainActivity.class);
+//                success.putExtra(name,name);
+//                success.putExtra(email,email);
+//                success.putExtra(img_url,img_url);
+//                startActivity(success);
+
 
 //                Intent success = new Intent(LoginActivity.this, MainActivity.class);
 //                startActivity(success);
@@ -138,16 +148,21 @@ public class LoginActivity extends AppCompatActivity
                             // 로그인 성공
                             Log.d(TAG, "Login success");
                             //Toast.makeText(RegisterActivity.this, R.string.success_login, Toast.LENGTH_SHORT).show();
-//                            Intent success = new Intent(LoginActivity.this, MainActivity.class);
-//                            startActivity(success);
+                            Intent success = new Intent(LoginActivity.this, MainActivity.class);
+                            success.putExtra("name",name);
+                            success.putExtra("email",email);
+                            success.putExtra("img_url",img_url);
+                            startActivity(success);
 
-                            finish();
+                            //finish();
                         } else {
                             // 로그인 실패
+                            boolean a = task.isSuccessful();
                             Log.d(TAG, "Login Failed");
+                            Log.d("reason",String.valueOf(a));
                             //Toast.makeText(RegisterActivity.this, R.string.failed_login, Toast.LENGTH_SHORT).show();
-                            Intent success = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(success);
+//                            Intent success = new Intent(LoginActivity.this, MainActivity.class);
+//                            startActivity(success);
                         }
 
 
