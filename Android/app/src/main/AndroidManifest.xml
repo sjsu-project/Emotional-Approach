@@ -32,7 +32,9 @@ package="com.example.android">
 
     </activity>
 
-    <activity android:name="LoginActivity"></activity>
+    <activity android:name=".LoginActivity" />
+    <activity android:name=".PhotoStorage" />
+    <activity android:name=".Timeline" />
 </application>
 
 
