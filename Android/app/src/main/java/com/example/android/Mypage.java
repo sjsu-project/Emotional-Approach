@@ -63,6 +63,7 @@ package com.example.android;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -75,20 +76,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Time;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import static android.app.Activity.RESULT_OK;
 
 
 public class Mypage extends Fragment {
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.mypage);
-//    }
+
 
     private static final String TAG = "Mypage";
     private static int PICK_IMAGE_REQUEST = 1;
@@ -101,22 +107,27 @@ public class Mypage extends Fragment {
     private ImageView imgView;
     private Button photostorage,travelstories;
     private Button trip1,trip2,trip3;
+    private TextView name_txt, email_txt;
+    private String name,email,img_url;
+    private ImageView mypage_img;
+    private Bitmap bitmap;
 
+    //    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.mypage,container,false);
 
-
         Log.d(TAG,"storage click");
-//        storage1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.i(TAG, " 1 click");
-//            }
-//        });
-
+        Bundle extra = this.getArguments();
+        Log.d(TAG, String.valueOf(getArguments()));
+        name = Login_Info.getInstance().getName();
+        email = Login_Info.getInstance().getEmail();
+        img_url = Login_Info.getInstance().getImg_url();
+        Log.d(TAG,name);
+        Log.d(TAG,email);
+        Log.d(TAG,img_url);
 
         camera = (Button) view.findViewById(R.id.camera);
         camera.setOnClickListener(new View.OnClickListener() {
@@ -179,6 +190,49 @@ public class Mypage extends Fragment {
             }
         });
 
+        name_txt = (TextView) view.findViewById(R.id.name);
+        name_txt.setText(name);
+        email_txt = (TextView) view.findViewById(R.id.email);
+        email_txt.setText(email);
+
+        mypage_img = (ImageView) view.findViewById(R.id.mypage_img);
+
+        //이미지 url에서 받아와서 변경
+        Thread mThread = new Thread()
+        {
+            @Override
+            public void run()
+            {
+                try{
+                    URL url = new URL(img_url);
+                    HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+                    conn.setDoInput(true);
+                    conn.connect();
+
+                    InputStream is = conn.getInputStream();
+                    bitmap = BitmapFactory.decodeStream(is);
+                }
+                catch (MalformedURLException e)
+                {
+                    e.printStackTrace();
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        mThread.start();
+
+        try{
+            mThread.join();
+            mypage_img.setImageBitmap(bitmap);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
 
         return view;
 
@@ -221,6 +275,5 @@ public class Mypage extends Fragment {
         }
 
     }
-
 
 }

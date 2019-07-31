@@ -152,6 +152,9 @@ public class LoginActivity extends AppCompatActivity
                             success.putExtra("name",name);
                             success.putExtra("email",email);
                             success.putExtra("img_url",img_url);
+                            Login_Info.getInstance().setName(name);
+                            Login_Info.getInstance().setEmail(email);
+                            Login_Info.getInstance().setImg_url(img_url);
                             startActivity(success);
 
                             //finish();
@@ -176,4 +179,16 @@ public class LoginActivity extends AppCompatActivity
         Log.d(TAG,"onconnection failed");
     }
 
+    public String getName()
+    {
+        return name;
+    }
+    public String getEmail()
+    {
+        return email;
+    }
+    public String getImg_url()
+    {
+        return img_url;
+    }
 }

@@ -22,6 +22,8 @@ public class Home extends Fragment{
     private Button search_icon;
 
     private static final String TAG = "Home";
+    private String name,email,img_url;
+
 
 
 
@@ -32,6 +34,23 @@ public class Home extends Fragment{
         View view = inflater.inflate(R.layout.home,container,false);
 
         Log.d(TAG,"oncreateview_home");
+
+        Log.d(TAG,"home click");
+        Log.d(TAG, String.valueOf(getArguments()));
+        if(getArguments() != null){
+            Log.d(TAG,"getArgument함수");
+
+            name = getArguments().getString("name"); // 전달한 key 값
+            email = getArguments().getString("email"); // 전달한 key 값
+            img_url = getArguments().getString("img_url"); // 전달한 key 값
+            Log.d(TAG,name);
+            Log.d(TAG,email);
+            Log.d(TAG,img_url);
+
+
+        }
+
+
 
         search_bar = (TextView) view.findViewById(R.id.search_bar);
 

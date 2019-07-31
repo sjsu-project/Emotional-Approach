@@ -1,11 +1,14 @@
 package com.example.android;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -19,7 +22,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,8 +53,8 @@ public class MainActivity extends AppCompatActivity
 
     private String name,email,img_url;
     private TextView nav_name,nav_email;
-
-
+    private ImageView nav_img;
+    private Bitmap bitmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +63,6 @@ public class MainActivity extends AppCompatActivity
         name = intent.getStringExtra("name");
         email = intent.getStringExtra("email");
         img_url = intent.getStringExtra("img_url");
-        Log.d(TAG,name);
-        Log.d(TAG,email);
-        Log.d(TAG,img_url);
-
-//        nav_name.findViewById(R.id.nav_name);
-//        nav_email.findViewById(R.id.nav_email);
-//        nav_name.setText(name);
-//        nav_email.setText(email);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -87,6 +93,44 @@ public class MainActivity extends AppCompatActivity
         nav_name.setText(name);
         nav_email = nav_header_view.findViewById(R.id.nav_email);
         nav_email.setText(email);
+        nav_img = nav_header_view.findViewById(R.id.nav_img);
+
+        //이미지 url에서 받아와서 변경
+        Thread mThread = new Thread()
+        {
+            @Override
+            public void run()
+            {
+             try{
+                 URL url = new URL(img_url);
+                 HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+                 conn.setDoInput(true);
+                 conn.connect();
+
+                 InputStream is = conn.getInputStream();
+                 bitmap = BitmapFactory.decodeStream(is);
+             }
+             catch (MalformedURLException e)
+             {
+                 e.printStackTrace();
+             }
+             catch (IOException e)
+             {
+                 e.printStackTrace();
+             }
+            }
+        };
+
+        mThread.start();
+
+        try{
+            mThread.join();
+            nav_img.setImageBitmap(bitmap);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
 
 
          BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
@@ -105,8 +149,6 @@ public class MainActivity extends AppCompatActivity
                      case R.id.navigation_home: {
 
                          transaction.replace(R.id.frame_layout, home).commitAllowingStateLoss();
-                         //Intent intent1 = new Intent(MainActivity.this,Home.class);
-                         Log.d(TAG, "next");
                          break;
                      }
                      case R.id.navigation_notifications: {
@@ -116,19 +158,15 @@ public class MainActivity extends AppCompatActivity
                          break;
                      }
                      case R.id.navigation_alarm: {
+
                          transaction.replace(R.id.frame_layout, alarm).commitAllowingStateLoss();
                          //Intent intent3 = new Intent(MainActivity.this,Alarm.class);
 
                          break;
                      }
                      case R.id.navigation_mypage: {
+                         Log.d(TAG,"mypage click");
                          transaction.replace(R.id.frame_layout, mypage).commitAllowingStateLoss();
-                         //Intent intent4 = new Intent(MainActivity.this,Mypage.class);
-
-                         Log.d(TAG,"mypage");
-//
-//                         Intent success = new Intent(MainActivity.this, Mypage.class);
-//                         startActivity(success);
                          break;
                      }
                  }
