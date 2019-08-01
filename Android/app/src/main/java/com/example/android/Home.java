@@ -58,8 +58,12 @@ public class Home extends Fragment{
         search_bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Log.i(TAG, "search bar click");
                 search_bar.getText();
+                Intent success = new Intent(getActivity(), Search.class);
+                startActivity(success);
+
             }
         });
 
@@ -69,7 +73,10 @@ public class Home extends Fragment{
         search_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Log.i(TAG, "search icon click");
+                Intent success = new Intent(getActivity(), Search.class);
+                startActivity(success);
             }
         });
 

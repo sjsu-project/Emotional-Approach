@@ -6,9 +6,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/storage1">
         <LinearLayout
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="25dp"
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -47,6 +48,28 @@
         </LinearLayout>
     </LinearLayout>
 
+    <ImageButton
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/upload"
+        android:id="@+id/pic"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/img"/>
+        <TextView
+            android:id="@+id/tv_outPut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="출력 공간" />
+
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -59,12 +82,12 @@
         android:id="@+id/grid_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:numColumns="auto_fit"
-        android:columnWidth="90dp"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
+        android:columnWidth="100dp"
         android:gravity="center"
-        android:stretchMode="columnWidth" >
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="2dp">
 
     </GridView>
 

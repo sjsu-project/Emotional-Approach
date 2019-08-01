@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-
 public class PhotoStorage extends Fragment {
 
     LinearLayout storage1;

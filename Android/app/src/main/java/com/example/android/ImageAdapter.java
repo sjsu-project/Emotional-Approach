@@ -12,7 +12,7 @@ public class ImageAdapter extends BaseAdapter {
 
     // Keep all Images in array
     public Integer[] mThumbIds = {
-            R.drawable.hamburger,R.drawable.resturant
+            R.drawable.cityhall,R.drawable.hamburger,R.drawable.resturant
     };
 
     // Constructor
@@ -40,7 +40,7 @@ public class ImageAdapter extends BaseAdapter {
         ImageView imageView = new ImageView(mContext);
         imageView.setImageResource(mThumbIds[position]);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setLayoutParams(new GridView.LayoutParams(70, 70));
+        imageView.setLayoutParams(new GridView.LayoutParams(450, 450));
         return imageView;
     }
 
