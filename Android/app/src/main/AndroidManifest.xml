@@ -19,7 +19,7 @@ package="com.example.android">
 
     <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="api key" />
+        android:value="AIzaSyBreEng44vu8PlwLXjhxKT6Q_FyjTnN4FM" />
 
     <activity android:name=".MainActivity"
         android:label="@string/app_name"

@@ -69,7 +69,14 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,14 +86,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.Time;
-
 import javax.net.ssl.HttpsURLConnection;
 
 import static android.app.Activity.RESULT_OK;
@@ -94,14 +97,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class Mypage extends Fragment {
 
-
-
     private static final String TAG = "Mypage";
     private static int PICK_IMAGE_REQUEST = 1;
-
-    public interface OnChangeBodyListener{
-        public void onChangeBody(int layoutId);
-    }
 
     private Button camera, gallery;
     private ImageView imgView;
@@ -112,12 +109,57 @@ public class Mypage extends Fragment {
     private ImageView mypage_img;
     private Bitmap bitmap;
 
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+
+
+
     //    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.mypage,container,false);
+
+        // Adding Toolbar to the activity
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        // Initializing the TabLayout
+        tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
+        tabLayout.addTab(tabLayout.newTab().setText("Photo Storage"));
+        tabLayout.addTab(tabLayout.newTab().setText("Travel Stories"));
+        //tabLayout.addTab(tabLayout.newTab().setText("Tab Three"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        // Initializing ViewPager
+        viewPager = (ViewPager) view.findViewById(R.id.pager);
+
+        // Creating TabPagerAdapter adapter
+        final TabPagerAdapter pagerAdapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        // Set TabSelectedListener
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+                Log.d(TAG,String.valueOf(pagerAdapter.getCount()));
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         Log.d(TAG,"storage click");
         Bundle extra = this.getArguments();
@@ -129,66 +171,57 @@ public class Mypage extends Fragment {
         Log.d(TAG,email);
         Log.d(TAG,img_url);
 
-        camera = (Button) view.findViewById(R.id.camera);
-        camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "camera click");
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString());
+//        camera = (Button) view.findViewById(R.id.camera);
+//        camera.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG, "camera click");
+//                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                intent.putExtra(MediaStore.EXTRA_OUTPUT,
+//                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString());
+//
+//            }
+//        });
+//        gallery = (Button) view.findViewById(R.id.gallery);
+//        gallery.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG, "gallery click");
+//                // 사진 갤러리 호출
+//
+//                //Intent 생성
+//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT); //ACTION_PIC과 차이점?
+//                intent.setType("image/*"); //이미지만 보이게
+//                //Intent 시작 - 갤러리앱을 열어서 원하는 이미지를 선택할 수 있다.
+//                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+//            }
+//        });
+//
+//        imgView = (ImageView)view.findViewById(R.id.imgView);
+//
+//        photostorage = (Button) view.findViewById(R.id.photostorage);
+//        photostorage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG, "photostorage click");
+//                Intent myIntent = new Intent(Mypage.this.getActivity(), PhotoStorage.class);
+//                startActivity(myIntent);
+//
+//            }
+//        });
+//
+//        travelstories = (Button) view.findViewById(R.id.travelstories);
+//        travelstories.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG, "travelstories click");
+//                Intent myIntent = new Intent(Mypage.this.getActivity(), Travelstories.class);
+//                startActivity(myIntent);
+//
+//            }
+//        });
+//
 
-            }
-        });
-        gallery = (Button) view.findViewById(R.id.gallery);
-        gallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "gallery click");
-                // 사진 갤러리 호출
-
-                //Intent 생성
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT); //ACTION_PIC과 차이점?
-                intent.setType("image/*"); //이미지만 보이게
-                //Intent 시작 - 갤러리앱을 열어서 원하는 이미지를 선택할 수 있다.
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-            }
-        });
-
-        imgView = (ImageView)view.findViewById(R.id.imgView);
-
-        photostorage = (Button) view.findViewById(R.id.photostorage);
-        photostorage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "photostorage click");
-                Intent myIntent = new Intent(Mypage.this.getActivity(), PhotoStorage.class);
-                startActivity(myIntent);
-
-            }
-        });
-
-        travelstories = (Button) view.findViewById(R.id.travelstories);
-        travelstories.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "travelstories click");
-                Intent myIntent = new Intent(Mypage.this.getActivity(), Travelstories.class);
-                startActivity(myIntent);
-
-            }
-        });
-
-        trip1 = (Button) view.findViewById(R.id.trip1);
-        trip1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "trip1 click");
-                Intent myIntent = new Intent(Mypage.this.getActivity(), Timeline.class);
-                startActivity(myIntent);
-
-            }
-        });
 
         name_txt = (TextView) view.findViewById(R.id.name);
         name_txt.setText(name);

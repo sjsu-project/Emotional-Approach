@@ -5,117 +5,47 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/storage1">
-        <LinearLayout
-            android:layout_marginLeft="50dp"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        android:layout_height="100dp"
+        android:id="@+id/storage1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/sky">
 
-            <TextView
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/maincolor"
-                android:text="1 Year Storage"
-                android:textSize="25dp"
-                android:textColor="#FFFFFF"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2019.07.06 ~ 2020.07.26"
-                />
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3GB"
+            android:textSize="30dp"/>
 
-        <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_width="100dp"
-            android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2019.07.26 ~ 2020.07.26"
+            android:textSize="15dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="3GB"
-                android:textSize="50dp"/>
-
-        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp">
-        <LinearLayout
-            android:layout_marginLeft="50dp"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        android:layout_height="100dp"
+        android:id="@+id/storage2"
+        android:orientation="vertical"
+        android:gravity="center">
 
-            <TextView
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/maincolor"
-                android:text="1 Year Storage"
-                android:textSize="25dp"
-                android:textColor="#FFFFFF"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2019.07.06 ~ 2020.07.26"
-                />
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5GB"
+            android:textSize="30dp"/>
 
-        <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_width="100dp"
-            android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2019.08.01 ~ 2020.08.01"
+            android:textSize="15dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="3GB"
-                android:textSize="50dp"/>
-
-        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp">
-        <LinearLayout
-            android:layout_marginLeft="50dp"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
-            <TextView
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/maincolor"
-                android:text="1 Year Storage"
-                android:textSize="25dp"
-                android:textColor="#FFFFFF"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2019.07.06 ~ 2020.07.26"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_width="100dp"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="3GB"
-                android:textSize="50dp"/>
-
-        </LinearLayout>
-    </LinearLayout>
 
 </LinearLayout>
