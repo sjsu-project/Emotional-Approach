@@ -32,6 +32,7 @@ const selectStorage = userId => {
         });
     });
 };
+
 const insertStorage = (userId, storage, now, expired, newOrder) => {
     return new Promise((resolve, reject) => {
         let sql = `
@@ -117,38 +118,70 @@ const selectMaxKey = userId => {
         });
     });
 };
+
+//showOrder, page
+const selectFiles = (userId, storageNum) => {
+    return new Promise((resolve, reject) => {
+        let sql = `
+            SELECT 
+                *
+            FROM
+                files
+            WHERE
+                userId = ?
+            AND storageNum = ?
+        `;
+        console.log(storageNum);
+        const params = [userId, storageNum];
+
+        db.query(sql, params, (err, results, fields) => {
+            if (err) reject(err);
+            else resolve(results);
+        });
+    });
+};
+
 const insertFiles = (id, files, storageNum) => {
     return new Promise((resolve, reject) => {
+        console.log("queryfile", files);
         let sql = `
         insert into files (
             userid,
             filename,
             storagenum,
-            type,
+            fileType,
             size,
-            target) values `;
-
+            target
+            ) values `;
         let merge = new Array();
-        files.foreach(file => {
+        let targets = new Array();
+        files.forEach(file => {
             merge.push(
-                `(${id},${file.originalname},${storageNum},${file.mimetype},${
-                    file.size
-                },${file.location})`
+                `('${id}','${file.originalname}',${storageNum},'${
+                    file.mimetype
+                }',${file.size},'${file.location}')`
             );
         });
         const query = sql.concat(merge.join(","));
         db.query(query, (err, result, fields) => {
             if (err) reject(err);
-            else resolve();
+            else resolve({ targets, result });
         });
     });
 };
 
+const insertLabels = () => {
+    return new promise((resolve, reject) => {
+        resolve();
+    });
+};
 module.exports = {
     selectStorage,
     insertStorage,
     updateStorage,
     deleteStorage,
     selectMaxKey,
-    insertFiles
+    selectFiles,
+    insertFiles,
+    insertLabels
 };
