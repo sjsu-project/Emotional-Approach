@@ -35,6 +35,8 @@ public class PhotoStorage extends Fragment {
                 switch (v.getId()){
                     case R.id.storage1 :
                         Log.d(TAG,"click layout01");
+                        Intent success = new Intent(getActivity(), Personalstorage.class);
+                        startActivity(success);
                         break;
                 }
             }
@@ -47,11 +49,4 @@ public class PhotoStorage extends Fragment {
 
     }
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.photostorage);
-//
-//
-//    }
 }

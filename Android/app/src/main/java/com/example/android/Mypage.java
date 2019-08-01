@@ -102,8 +102,6 @@ public class Mypage extends Fragment {
 
     private Button camera, gallery;
     private ImageView imgView;
-    private Button photostorage,travelstories;
-    private Button trip1,trip2,trip3;
     private TextView name_txt, email_txt;
     private String name,email,img_url;
     private ImageView mypage_img;

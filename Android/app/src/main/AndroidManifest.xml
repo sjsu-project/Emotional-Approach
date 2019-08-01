@@ -19,7 +19,7 @@ package="com.example.android">
 
     <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyBreEng44vu8PlwLXjhxKT6Q_FyjTnN4FM" />
+        android:value="API" />
 
     <activity android:name=".MainActivity"
         android:label="@string/app_name"
@@ -43,9 +43,11 @@ package="com.example.android">
     </activity>
 
     <activity android:name=".LoginActivity" />
-    <activity android:name=".PhotoStorage" />
+    <activity android:name=".Personalstorage" />
     <activity android:name=".Timeline" />
     <activity android:name=".MapActivity"/>
+    <activity android:name=".FullImageActivity"></activity>
+
 </application>
 
 
