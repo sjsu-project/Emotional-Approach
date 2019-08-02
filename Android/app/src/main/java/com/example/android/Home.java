@@ -12,13 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
 public class Home extends Fragment{
 
     //private Button search_bar;
-    private TextView search_bar;
+    private EditText search_bar;
     private Button search_icon;
 
     private static final String TAG = "Home";
@@ -52,20 +53,21 @@ public class Home extends Fragment{
 
 
 
-        search_bar = (TextView) view.findViewById(R.id.search_bar);
+        search_bar = (EditText) view.findViewById(R.id.search_bar);
 
         Log.d(TAG,"search_bar create");
-        search_bar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.i(TAG, "search bar click");
-                search_bar.getText();
-                Intent success = new Intent(getActivity(), Search.class);
-                startActivity(success);
-
-            }
-        });
+//        search_bar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Log.i(TAG, "search bar click");
+//
+//                Intent success = new Intent(getActivity(), Search.class);
+//                success.putExtra("search",search_bar.getText());
+//                startActivity(success);
+//
+//            }
+//        });
 
         search_icon = (Button) view.findViewById(R.id.search_icon);
         Log.d(TAG,"search_icon create");
@@ -76,6 +78,8 @@ public class Home extends Fragment{
 
                 Log.i(TAG, "search icon click");
                 Intent success = new Intent(getActivity(), Search.class);
+                Log.d(TAG,search_bar.getText().toString());
+                success.putExtra("search",search_bar.getText().toString());
                 startActivity(success);
             }
         });

@@ -46,6 +46,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
@@ -120,20 +121,22 @@ public class Personalstorage extends Activity {
 
             }
         });
-        imageView = (ImageView)findViewById(R.id.img);
-
-
-
-        // 위젯에 대한 참조.
+//        imageView = (ImageView)findViewById(R.id.img);
+//
+//
+//
+//        // 위젯에 대한 참조.
         tv_outPut = (TextView) findViewById(R.id.tv_outPut);
 
         // URL 설정.
         String url = "http://ec2-13-52-97-164.us-west-1.compute.amazonaws.com:3000/ping";
 
         Log.d(TAG,"1");
+        //uploadToServer(url);
+
         // AsyncTask를 통해 HttpURLConnection 수행.
         NetworkTask networkTask = new NetworkTask(url, null);
-        networkTask.execute();
+        //networkTask.execute();
         Log.d(TAG,"2");
 
 
@@ -168,6 +171,8 @@ public class Personalstorage extends Activity {
             super.onPostExecute(s);
 
             //doInBackground()로 부터 리턴된 값이 onPostExecute()의 매개변수로 넘어오므로 s를 출력한다.
+//            Log.d(TAG,s);
+
             tv_outPut.setText(s);
         }
     }
@@ -196,6 +201,7 @@ public class Personalstorage extends Activity {
                     // Set the Image in ImageView after decoding the String
                     Log.d(TAG,"8  ");
                     imageView.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+
 
 //                    Uri selPhotoUri = data.getData();
 //
@@ -333,6 +339,30 @@ public class Personalstorage extends Activity {
 //        }
 //    }
 
+
+    private void uploadToServer(String filePath) {
+        Log.d(TAG,"uploadtoServer");
+        Retrofit retrofit = NetworkClient.getRetrofitClient(this);
+        UploadAPIs uploadAPIs = retrofit.create(UploadAPIs.class);
+        //Create a file object using file path
+        File file = new File(filePath);
+        // Create a request body with file and image media type
+        RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/*"), file);
+        // Create MultipartBody.Part using file request-body,file name and part name
+        MultipartBody.Part part = MultipartBody.Part.createFormData("upload", file.getName(), fileReqBody);
+        //Create request body with text description and text media type
+        RequestBody description = RequestBody.create(MediaType.parse("text/plain"), "image-type");
+        //
+        Call call = uploadAPIs.uploadImage(part, description);
+        call.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+            }
+            @Override
+            public void onFailure(Call call, Throwable t) {
+            }
+        });
+    }
 
 
 }

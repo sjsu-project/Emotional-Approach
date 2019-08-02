@@ -88,14 +88,14 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/trip1"
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:text="My Trip to San Fran."
-            android:background="@drawable/road"
-            android:id="@+id/trip1"
-            android:layout_weight="1"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/sanfrancisco2"
+            android:text="Sanfrancisco"
             android:textColor="#FFFFFF"
 
 
@@ -103,8 +103,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:text="Munchin San Francisco"
-            android:background="@drawable/hamburger"
+            android:text="SanJose"
+            android:background="@drawable/sanjose1"
             android:id="@+id/trip2"
             android:layout_weight="1"
             android:layout_marginLeft="3dp"
@@ -116,8 +116,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:text="My Trip to Korea"
-            android:background="@drawable/resturant"
+            android:text="Japan"
+            android:background="@drawable/japan1"
             android:id="@+id/trip3"
             android:layout_weight="1"
             android:layout_marginLeft="3dp"

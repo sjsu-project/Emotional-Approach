@@ -4,44 +4,85 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:id="@+id/storage1"
         android:orientation="vertical"
         android:gravity="center"
-        android:background="@drawable/sky">
+        android:background="@drawable/sanfrancisco1">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3GB"
+            android:text="SAN FRANCISCO"
+            android:textColor="#FFFFFF"
             android:textSize="30dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2019.07.26 ~ 2020.07.26"
+            android:textColor="#FFFFFF"
+
             android:textSize="15dp"/>
 
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:id="@+id/storage2"
         android:orientation="vertical"
+        android:background="@drawable/sanjose1"
+
         android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5GB"
+            android:text="SAN JOSE"
+            android:textColor="#FFFFFF"
+
             android:textSize="30dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2019.08.01 ~ 2020.08.01"
+            android:text="2019.08.01 ~ 2019.08.01"
+            android:textColor="#FFFFFF"
+
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/storage3"
+        android:orientation="vertical"
+        android:background="@drawable/japan1"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JAPAN"
+            android:textColor="#FFFFFF"
+
+            android:textSize="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2019.06.23 ~ 2019.06.27"
+            android:textColor="#FFFFFF"
+
             android:textSize="15dp"/>
 
     </LinearLayout>
