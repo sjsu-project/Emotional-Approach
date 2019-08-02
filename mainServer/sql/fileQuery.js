@@ -59,7 +59,7 @@ const insertStorage = (userId, storage, now, expired, newOrder) => {
 
         db.query(sql, params, (err, result, fields) => {
             if (err) reject(err);
-            else resolve();
+            else resolve(result.insertId);
         });
     });
 };
@@ -124,26 +124,36 @@ const selectFiles = (userId, storageNum) => {
     return new Promise((resolve, reject) => {
         let sql = `
             SELECT 
-                *
-            FROM
-                files
+                f.*,
+                group_concat(l.label) as labels
+            FROM 
+                files as f
+            LEFT JOIN
+                labels as l
+            ON
+                f.target = l.target
             WHERE
                 userId = ?
             AND storageNum = ?
+            GROUP BY 
+                f.target
         `;
         console.log(storageNum);
         const params = [userId, storageNum];
 
-        db.query(sql, params, (err, results, fields) => {
+        db.query(sql, params, async (err, results, fields) => {
             if (err) reject(err);
-            else resolve(results);
+            await results.forEach(result => {
+                if (result.labels === null) result.labels = [];
+                else result.labels = result.labels.split(",");
+            });
+            resolve(results);
         });
     });
 };
 
 const insertFiles = (id, files, storageNum) => {
-    return new Promise((resolve, reject) => {
-        console.log("queryfile", files);
+    return new Promise(async (resolve, reject) => {
         let sql = `
         insert into files (
             userid,
@@ -151,30 +161,89 @@ const insertFiles = (id, files, storageNum) => {
             storagenum,
             fileType,
             size,
-            target
+            target,
+            thumbTarget
             ) values `;
         let merge = new Array();
-        let targets = new Array();
-        files.forEach(file => {
+        console.log("insert");
+        await files.forEach(file => {
             merge.push(
                 `('${id}','${file.originalname}',${storageNum},'${
                     file.mimetype
-                }',${file.size},'${file.location}')`
+                }',${file.size},'${file.location}','${file.location.replace(
+                    "/first/",
+                    "/copy/"
+                )}')`
             );
         });
         const query = sql.concat(merge.join(","));
         db.query(query, (err, result, fields) => {
             if (err) reject(err);
-            else resolve({ targets, result });
+            else resolve(result);
         });
     });
 };
 
-const insertLabels = () => {
-    return new promise((resolve, reject) => {
-        resolve();
+const insertLabels = files => {
+    return new Promise(async (resolve, reject) => {
+        let sql = `
+            insert into labels (target,label) values`;
+        let merge = [];
+        await files.forEach(file => {
+            const labels = file.labels;
+            labels.forEach(label => {
+                merge.push(`('${file.location}','${label}')`);
+            });
+        });
+        const query = sql.concat(merge.join(","));
+        db.query(query, (err, result) => {
+            if (err) {
+                console.log(err);
+                reject(err);
+            } else resolve(result);
+        });
     });
 };
+
+const selectSearch = labels => {
+    return new Promise((resolve, reject) => {
+        let sql = `
+    SELECT 
+        f.*,
+        group_concat(l.label) as labels 
+    FROM
+        files as f 
+    LEFT JOIN 
+        (
+            select 
+                *
+            from
+                labels
+            where
+                target IN (
+                        select 
+                            target 
+                        from 
+                            labels 
+                        where 
+                            labels.label IN("${labels.replace(",", "`,`")}")
+                            )
+                        ) as l
+    ON
+        f.target = l.target
+    GROUP BY
+        f.target
+        `;
+        console.log(sql);
+        db.query(sql, (err, result, fields) => {
+            console.log(result);
+
+            if (err) reject(err);
+            else resolve(result);
+        });
+    });
+};
+
 module.exports = {
     selectStorage,
     insertStorage,
@@ -183,5 +252,6 @@ module.exports = {
     selectMaxKey,
     selectFiles,
     insertFiles,
-    insertLabels
+    insertLabels,
+    selectSearch
 };

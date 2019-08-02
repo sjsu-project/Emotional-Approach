@@ -25,7 +25,7 @@ def main():
     total_sum_inArray = 0
     result={}
     for item in lines:
-        result[item]=["first","second","third"]
+        result[item]=['first','second','third']
 
     #return the sum to the output stream
     print (result)
