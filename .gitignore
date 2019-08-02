@@ -7,7 +7,7 @@ yarn-error.log*
 
 ################# KEYS
 keys/
-
+package-lock.json
 # Runtime data
 pids
 *.pid

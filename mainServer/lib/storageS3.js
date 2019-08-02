@@ -11,7 +11,13 @@ module.exports = multer({
         bucket: "traveloguesjsu", //버켓 이름 넣어줌
         key: function(req, file, cb) {
             // 버켓에 담을 이름 설정
-            const filename = Date.now().toString() + "_" + file.originalname;
+            const filename =
+                "first/" +
+                Date.now().toString() +
+                "_" +
+                req.params.userId +
+                "_" +
+                file.originalname;
             cb(null, filename);
         },
         acl: "public-read-write" //권한
