@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3 media stored"
+                android:text="5 media stored"
                 />
         </LinearLayout>
 
@@ -55,20 +55,20 @@
         android:background="@drawable/upload"
         android:id="@+id/pic"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/img"/>
-        <TextView
-            android:id="@+id/tv_outPut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="출력 공간" />
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<ImageView-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:id="@+id/img"/>-->
+        <!--<TextView-->
+            <!--android:id="@+id/tv_outPut"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="출력 공간" />-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
     <View
         android:layout_width="match_parent"

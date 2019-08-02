@@ -126,7 +126,7 @@ public class Personalstorage extends Activity {
 //
 //
 //        // 위젯에 대한 참조.
-        tv_outPut = (TextView) findViewById(R.id.tv_outPut);
+//        tv_outPut = (TextView) findViewById(R.id.tv_outPut);
 
         // URL 설정.
         String url = "http://ec2-13-52-97-164.us-west-1.compute.amazonaws.com:3000/ping";
@@ -200,7 +200,7 @@ public class Personalstorage extends Activity {
                     cursor.close();
                     // Set the Image in ImageView after decoding the String
                     Log.d(TAG,"8  ");
-                    imageView.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+//                    imageView.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
 
 
 //                    Uri selPhotoUri = data.getData();
