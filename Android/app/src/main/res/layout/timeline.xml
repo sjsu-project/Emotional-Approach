@@ -56,8 +56,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -68,38 +68,92 @@
                     android:contentDescription="@string/nav_header_desc"
                     android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
-                <ImageView
-                    android:layout_marginBottom="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:contentDescription="@string/nav_header_desc"
-                    android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:background="@drawable/sanfrancisco2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Painted Ladies"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All buildings look the same." />
 
                 <ImageView
-                    android:layout_marginBottom="15dp"
-
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/sanfrancisco2"
                     android:contentDescription="@string/nav_header_desc"
-                    android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:background="@drawable/sanfrancisco3" />
+                    android:paddingTop="@dimen/nav_header_vertical_spacing" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="CityHall"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Very nice!!!"/>
+
                 <ImageView
-                    android:layout_marginBottom="15dp"
-
                     android:layout_width="match_parent"
+
                     android:layout_height="400dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/sanfrancisco3"
                     android:contentDescription="@string/nav_header_desc"
-                    android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:background="@drawable/sanfrancisco4" />
+                    android:paddingTop="@dimen/nav_header_vertical_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Union Square"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="There are four heart sculptures"/>
+
+
                 <ImageView
-                    android:layout_marginBottom="15dp"
-
                     android:layout_width="match_parent"
+
                     android:layout_height="400dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/sanfrancisco4"
                     android:contentDescription="@string/nav_header_desc"
-                    android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:background="@drawable/sanfrancisco5" />
+                    android:paddingTop="@dimen/nav_header_vertical_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Grace Cathedral"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nice Cathedral"/>
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+
+                    android:layout_height="400dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/sanfrancisco5"
+                    android:contentDescription="@string/nav_header_desc"
+                    android:paddingTop="@dimen/nav_header_vertical_spacing" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Lombard street"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amazing zigzag experience"/>
 
 
             </LinearLayout>

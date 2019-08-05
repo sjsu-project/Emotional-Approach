@@ -46,4 +46,9 @@ public class ImageAdapter extends BaseAdapter {
         return imageView;
     }
 
+    public void putImage()
+    {
+        mThumbIds[mThumbIds.length-1] = R.drawable.tokyo;
+    }
+
 }

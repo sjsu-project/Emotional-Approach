@@ -6,7 +6,7 @@
     android:id="@+id/ScrollView1"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -140,6 +140,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:text="advidtraveler"
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -150,6 +151,7 @@
                     android:textSize="15dp" />
 
                 <TextView
+                    android:text="Unversity"
                     android:id="@+id/work"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -157,6 +159,7 @@
                     android:textSize="12dp" />
 
                 <TextView
+                    android:text="Major in Business"
                     android:id="@+id/major"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -164,6 +167,7 @@
                     android:textSize="12dp" />
 
                 <TextView
+                    android:text="Loves to hangout!"
                     android:id="@+id/comment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -173,6 +177,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
 
 
         <LinearLayout
@@ -185,7 +190,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@drawable/road"
+                android:background="@drawable/sanfrancisco1"
                 android:id="@+id/trip1"
                 android:layout_weight="1"
                 android:layout_marginLeft="3dp"
@@ -197,7 +202,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@drawable/hamburger"
+                android:background="@drawable/sanfrancisco2"
                 android:id="@+id/trip2"
                 android:layout_weight="1"
                 android:layout_marginLeft="3dp"
@@ -209,7 +214,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@drawable/resturant"
+                android:background="@drawable/sanfrancisco3"
                 android:id="@+id/trip3"
                 android:layout_weight="1"
                 android:layout_marginLeft="3dp"
@@ -313,7 +318,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@drawable/road"
+                android:background="@drawable/sanfrancisco1_1"
                 android:id="@+id/trip1_2"
                 android:layout_weight="1"
                 android:layout_marginLeft="3dp"
@@ -325,7 +330,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@drawable/hamburger"
+                android:background="@drawable/sanfrancisco2_1"
                 android:id="@+id/trip2_2"
                 android:layout_weight="1"
                 android:layout_marginLeft="3dp"
@@ -337,7 +342,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@drawable/resturant"
+                android:background="@drawable/sanfrancisco3_1"
                 android:id="@+id/trip3_2"
                 android:layout_weight="1"
                 android:layout_marginLeft="3dp"
@@ -352,6 +357,7 @@
 
 
     </LinearLayout>
+
 
 
 </LinearLayout>

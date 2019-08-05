@@ -93,7 +93,7 @@ public class Search extends AppCompatActivity implements View.OnClickListener {
             major.setText("Major in Business");
             major_1.setText("Mostly travel USA");
             comment.setText("Loves to hangout!");
-            comment_1.setText("#sharin #exp");
+            comment_1.setText("&sharin &exp");
             tag1.setText("&sanfrancisco");
             tag2.setText("&cityhall");
             tag3.setText("&california");
